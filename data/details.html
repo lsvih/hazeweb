@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>环境污染程度和介绍</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--webfont-->
+<!--<link href='http://fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<script src="js/jquery.easydropdown.js"></script>
+<!--Animation-->
+<script src="js/wow.min.js"></script>
+<link href="css/animate.css" rel='stylesheet' type='text/css' />
+<!--dimple-->
+<script src="./lib/d3.v3.4.8.min.js"></script>
+<script src="./lib/dimple.v2.2.0.min.js"></script>
+<script>
+	new WOW().init();
+</script>
+</head>
+<body>
+<div class="header">
+		   <div class="col-sm-8 header-left">
+					 <!--<div class="logo">
+						<a href="index.html"><img src="images/logo.png" alt=""/></a>
+					 </div>-->
+					 <!--<div class="menu">
+						  <!--<a class="toggleMenu" href="#"><img src="images/nav.png" alt="" /></a>-->
+						    <!--<ul class="nav" id="nav">
+						    	<li class="active"><a href="javascript:void(0)">1 dimension</a></li>
+						    	<li><a href="javascript:void(0)">2 dimension</a></li>
+						    	<li><a href="javascript:void(0)">3 dimension</a></li>
+						    	<li><a href="javascript:void(0)">4 dimension</a></li>
+								<div class="clearfix"></div>
+							</ul>
+							<!--<script type="text/javascript" src="js/responsive-nav.js"></script>-->
+				    <!--</div>-->	
+				     				
+	    		    <div class="clearfix"></div>
+	    	    </div>
+	            
+			             </div>
+	<div class="clearfix"></div>
+	<div class="clearfix"></div>
+
+   
+   <div class="content_top">
+   	  <div class="container">
+   		<!--<div class="col-md-4 bottom_nav">
+   		   <div class="content_menu">
+				<ul>
+					<li class="active"><a href="javascript:void(0)">Recommended</a></li> 
+					<li><a href="javascript:void(0)">Latest</a></li> 
+					<li><a href="javascript:void(0)">Highlights</a></li> 
+				</ul>
+			</div>
+		</div>-->
+		<div class="content_dropdown1">
+		   <div class="content_dropdown">  
+				<div>X 轴变量:</div>
+		       <select id="x-axis" class="dropdown" tabindex="10" data-settings='{"wrapperClass":"metro"}' onchange="onAxisChange(0)">
+						<option value="15">date</option>
+            			<option value="0">aqi</option>	
+						<option value="1">SO2</option>
+						<option value="2">SO2_24h</option>
+						<option value="3">NO2</option>
+						<option value="4">NO2_24h</option>
+						<option value="5">C0</option>
+						<option value="6">CO_24h</option>
+						<option value="7">O3</option>
+						<option value="8">O3_24h</option>
+						<option value="9">O3_8h</option>
+						<option value="10">O3_8h_24h</option>
+						<option value="11">PM10</option>
+						<option value="12">PM10_24h</option>
+						<option value="13">PM2.5</option>
+						<option value="14">PM2.5_24h</option>
+		        </select>
+		     </div>
+		     <div class="content_dropdown">   
+		     <div>Y 轴变量:</div> 
+		       <select id="y-axis" class="dropdown" tabindex="10" data-settings='{"wrapperClass":"metro"}' onchange="onAxisChange(1)">
+            			<option value="0">aqi</option>	
+						<option value="1">SO2</option>
+						<option value="2">SO2_24h</option>
+						<option value="3">NO2</option>
+						<option value="4">NO2_24h</option>
+						<option value="5">C0</option>
+						<option value="6">CO_24h</option>
+						<option value="7">O3</option>
+						<option value="8">O3_24h</option>
+						<option value="9">O3_8h</option>
+						<option value="10">O3_8h_24h</option>
+						<option value="11">PM10</option>
+						<option value="12">PM10_24h</option>
+						<option value="13">PM2.5</option>
+						<option value="14">PM2.5_24h</option>
+		        </select>
+		       </div>
+		       <div class="content_dropdown">    
+		       <select id="show-all" class="dropdown" tabindex="10" data-settings='{"wrapperClass":"metro"}' onchange="onAxisChange(2)">
+            			<option value="0">显示全部</option>	
+						<option value="1">分段显示</option>
+		        </select>
+		       </div>
+		</div>
+		
+   	</div>
+   </div>
+   <div class="content_middle">
+   	  <div class="container">
+   	    <div class="content_middle_box">
+          
+   	          <div class="middle_grid wow fadeInUp" data-wow-delay="0.4s" id="Container">
+   			    
+   			    
+   		      </div>
+   		</div>
+   	  </div>
+      </div>
+   </div>
+   <script type="text/javascript">
+	var x_attr_name = "date";
+	var y_attr_name = "aqi";
+	var column_per_table = 20;
+	var show_all_data = 0; // all:0, slices:1
+	
+	var container = document.getElementById("Container");
+	var drawGraph = function(){
+		d3.csv("./data/aqi.csv", function (data) {
+			//data = dimple.filterData(data, "Owner", ["Aperture", "Black Mesa"])
+			
+			if(show_all_data == 0){
+				data = data.slice(0,200);
+			
+				var graph = document.createElement("div");
+				//graph.setAttribute("class", "col-md-6 index-grids");
+				graph.setAttribute("id", "graph");
+				container.appendChild(graph);
+				
+				var svg = dimple.newSvg("#graph", 10000, 500);
+				var myChart = new dimple.chart(svg, data);
+				myChart.setBounds(60, 30, 9900, 400);
+				var x = myChart.addCategoryAxis("x", x_attr_name);
+				x.addOrderRule(x_attr_name);
+				myChart.addMeasureAxis("y", y_attr_name);
+				var s = myChart.addSeries(null, dimple.plot.area);
+				s.interpolation = "cardinal";
+				s.lineWeight = 3;
+				myChart.draw();
+			
+			}else{
+				var count = data.length / column_per_table;
+				
+				for(var i = 0; i < count; i++){
+					var graph = document.createElement("div");
+					graph.setAttribute("class", "col-md-6 index-grids");
+					graph.setAttribute("id", "graph" + i);
+					container.appendChild(graph);
+					
+					var sData = data.slice(i * column_per_table, (i + 1) * column_per_table);
+					var svg = dimple.newSvg("#graph" + i, 570, 304);
+					var myChart = new dimple.chart(svg, sData);
+					myChart.setBounds(60, 30, 410, 205);
+					var x = myChart.addCategoryAxis("x", x_attr_name);
+					x.addOrderRule(x_attr_name);
+					myChart.addMeasureAxis("y", y_attr_name);
+					var s = myChart.addSeries(null, dimple.plot.area);
+					s.interpolation = "step";
+					s.lineWeight = 3;
+					myChart.draw();
+				 }
+			}
+		});
+     }
+   
+     var x_values = ["aqi", "so2", "so2_24h", "no2", "no2_24h", "co", "co_24h", "o3", "o3_24h", "o3_8h", "o3_8h_24h", "pm10", "pm10_24h", "pm2_5", "pm2_5_24h", "date"];
+     var y_values = ["aqi", "so2", "so2_24h", "no2", "no2_24h", "co", "co_24h", "o3", "o3_24h", "o3_8h", "o3_8h_24h", "pm10", "pm10_24h", "pm2_5", "pm2_5_24h"];
+     var x_axis = document.getElementById("x-axis");
+     var y_axis = document.getElementById("y-axis");
+     var show_all = document.getElementById("show-all");
+     
+     var clear_container = function(){
+		while(container.hasChildNodes()){
+			container.removeChild(container.lastChild);
+		}
+     }
+     
+     // x:0,y:1,showall:2
+     var onAxisChange = function(option){
+		if(option == 0){
+			var index = x_axis.value;
+			x_attr_name = x_values[index];
+		}else if(option == 1){
+			var index = y_axis.value;
+			y_attr_name = y_values[index];
+		}else{
+			var value = show_all.value;
+			show_all_data = value;
+		}
+		
+		clear_container();
+		drawGraph();
+     }
+     
+     
+     drawGraph();
+     
+     
+     
+   </script>
+  </body>
+</html>		
