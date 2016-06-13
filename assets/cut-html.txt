@@ -1,0 +1,73 @@
+<div id="services" class="page bg-white">
+			<section class="container-fluid page-bg-img">
+				<div class="row-fluid">
+					<section class="container">
+						<div class="row">
+							<div class="page-style span4">
+								<h3>团队优势</h3>
+
+							</div>
+							<div class="page-style-details span8">
+								<h3>团队优势</h3>
+								<h5>副标题</h5>
+								<p>
+									内容<br />内容<br />内容<br />内容<br />
+								</p>
+
+							</div>
+
+						</div>
+						<!-- // End of .row -->
+					</section>
+					<!-- // End of .container -->
+				</div>
+				<!-- // End of .row-fluid -->
+			</section>
+			<!-- // End of .container-fluid -->
+			<section class="container-fluid">
+				<div class="row-fluid">
+					<section class="container">
+
+						<div class="row custom-padding">
+
+							<article class="span4">
+								<div class="about-heading-red">
+									<img src="images/about-images/heading-three.png" alt="haze">
+								</div>
+								<div class="about-details-red">
+									<h3>交通数据</h3>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac nunc quis augue pellentesque condimentum. Fusce pulvinar lacus et eleifend blandit. Curabitur consequat, lorem vitae ornare. </p>
+								</div>
+							</article>
+
+							<article class="span4">
+								<div class="about-heading-black">
+									<img src="images/about-images/heading-three.png" alt="haze">
+								</div>
+								<div class="about-details-black">
+									<h3>天气数据</h3>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac nunc quis augue pellentesque condimentum. Fusce pulvinar lacus et eleifend blandit. Curabitur consequat, lorem vitae ornare.</p>
+								</div>
+							</article>
+
+							<article class="span4">
+								<div class="about-heading-red">
+									<img src="images/about-images/heading-three.png" alt="haze">
+								</div>
+								<div class="about-details-red">
+									<h3>专业分工化</h3>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac nunc quis augue pellentesque condimentum. Fusce pulvinar lacus et eleifend blandit. Curabitur consequat, lorem vitae ornare.</p>
+								</div>
+							</article>
+
+						</div>
+						<!-- // End of .row -->
+
+					</section>
+					<!-- container : ends -->
+				</div>
+				<!-- row-fuild : ends -->
+			</section>
+			<!-- container-fluid : ends-->
+		</div>
+		<!-- services : ends -->

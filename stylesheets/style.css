@@ -588,7 +588,7 @@ font-family:"RobotoLight";
 	padding: 0px;
 	margin: 0px;
 	font-size: 25px;
-	font-family: "RobotoBold";
+	font-family: "微软雅黑";
 }
 
 .service-details .service-hover-text h4 {
@@ -644,7 +644,7 @@ font-family:"RobotoLight";
 .service-details .service-text p {
 	padding:100px 0px 0px 20px;
 	font-size: 24px;
-	font-family: "RobotoBold";
+	font-family: "微软雅黑";
 	color: #fff;
 }
 
@@ -814,7 +814,7 @@ font-family:"Open_Sans_L","微软雅黑";
 }
 
 .news-img-section .imgs a .blog-attr h4 {
-	color: #fff;
+	color: #000;
 	font-size: 21px;
 	line-height: 28px;
 	font-family: "RobotoRegular";
@@ -825,7 +825,7 @@ font-family:"Open_Sans_L","微软雅黑";
 }
 
 .news-img-section .imgs a .blog-attr p {
-	color: #fff;
+	color: #000;
 	font-size: 14px;
 	line-height: 21px;
 	font-family: "Open_Sans_R";
