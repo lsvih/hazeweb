@@ -626,7 +626,7 @@ font-family:"RobotoLight";
 .service-details:hover .service-hover-text {
 	display: block !important;
 	color: rgba(255,255,255,1);
-	background:#cccccc;
+	background:rgba(0, 0, 0, 0.42);
 	left: 0px;
 	top: 0px;
 }
@@ -806,7 +806,7 @@ font-family:"Open_Sans_L","微软雅黑";
 	height: 200px;
 	width: 88%;
 	bottom: -220px;
-	background: #cccccc;
+	background:rgba(255, 255, 255, 0.42);
 	padding: 15px 15px 10px 15px;
 	text-align: left;
 	transition: all .3s ease-out;
